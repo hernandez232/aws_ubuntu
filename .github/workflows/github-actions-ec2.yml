@@ -20,9 +20,6 @@ jobs:
         with:
           node-version: '18' # Usa la versión adecuada
 
-      - name: Checkout the files
-        uses: actions/checkout@v2
-
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
@@ -46,5 +43,5 @@ jobs:
       - name: Instalar dependencias
         run: npm install --legacy-peer-deps
     
-      - name: Ejecutar el build
-        run: npm run build
+      - name: Ejecutar la app
+        run: npm start
