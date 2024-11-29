@@ -29,7 +29,8 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: 
+          script: |
+            sudo apt-get -y update
             sudo apt install -y nodejs
             sudo apt install -y npm
             npm install
