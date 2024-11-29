@@ -12,5 +12,5 @@ RUN npm install
 COPY . .
 
 # Use an Nginx image to serve the app
-EXPOSE 80
+EXPOSE 5000
 CMD ["npm","run","start"]
