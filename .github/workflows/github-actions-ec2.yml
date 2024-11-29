@@ -44,7 +44,7 @@ jobs:
             sudo apt install -y nginx 
 
       - name: Instalar dependencias
-        run: npm install
+        run: npm install --legacy-peer-deps
     
       - name: Ejecutar el build
         run: npm run build
