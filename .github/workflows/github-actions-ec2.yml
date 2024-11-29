@@ -15,7 +15,7 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Deploy to Server 1
+      - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
@@ -34,5 +34,5 @@ jobs:
             sudo apt install -y nodejs
             sudo apt install -y npm
             npm install
-            PORT=5000 npm start
-            cd home
+            npm build
+            sudo cp -r ./build/* /var/www/html
