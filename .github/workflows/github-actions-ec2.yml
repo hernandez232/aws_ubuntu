@@ -36,4 +36,3 @@ jobs:
             npm install
             npm start
             cd home
-            sudo mv * /var/www/html
