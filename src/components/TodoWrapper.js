@@ -4,7 +4,7 @@ import { TodoForm } from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
 import { EditTodoForm } from "./EditTodoForm";
 
-export const odoWrapper = () => {
+export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
@@ -51,7 +51,7 @@ export const odoWrapper = () => {
         ) : (
           <Todo
             key={todo.id} // Ya tengo la key aquí
-            task={todo}
+            ask={todo}
             deleteTodo={deleteTodo}
             editTodo={editTodo}
             toggleComplete={toggleComplete}
