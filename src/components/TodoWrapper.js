@@ -42,7 +42,7 @@ export const TodoWrapper = () => {
 
   return (
     <div className="TodoWrapper">
-      <h1>Get Your Things Done !</h1>
+      <h1>Get All Your Things Done !</h1>
       <TodoForm addTodo={addTodo} />
       {/* display todos */}
       {todos.map((todo) =>
@@ -50,7 +50,7 @@ export const TodoWrapper = () => {
           <EditTodoForm key={todo.id} editTodo={editTask} task={todo} />
         ) : (
           <Todo
-            key={todo.id} // Ya tienes la key aquí
+            key={todo.id} // Ya tengo la key aquí
             task={todo}
             deleteTodo={deleteTodo}
             editTodo={editTodo}
