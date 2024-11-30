@@ -8,19 +8,25 @@ on:
 
 jobs:
   deploy:
-    name: Deploy the page to EC2 on main branch push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout codigo
+      - name: Checkout Source
         uses: actions/checkout@v3
 
-      - name: Configurar Node.js
+      - name: Node.js Configuration
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # Usa la versión adecuada
+          node-version: '18'
 
-      - name: Deploy to Server
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker Image
+        run: docker build -t andra55/react-app .
+      - name: Publish image to docker hub
+        run: docker push andra55/react-app:latest  
+        
+      - name: Login to AWS
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
@@ -34,14 +40,10 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            sudo apt-get -y update
-            sudo apt install -y nodejs
-            sudo apt install -y npm
-            sudo apt install -y nginx 
-
-      - name: Instalar dependencias
-        run: npm install --legacy-peer-deps
-    
-      - name: Ejecutar la app
-        run: npm start
+      
+      - name: Pull image from docker hub
+        run: docker pull andra/react-app:latest 
+      - name: Delete Old Container
+        run: docker rm -f reactContainer
+      - name: Run docker container
+        run: docker run -d -p 3000:80 --name reactContainer andra/react-app
