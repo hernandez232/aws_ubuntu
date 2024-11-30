@@ -4,7 +4,7 @@ import { TodoForm } from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
 import { EditTodoForm } from "./EditTodoForm";
 
-export const TodoWrapper = () => {
+export const odoWrapper = () => {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
