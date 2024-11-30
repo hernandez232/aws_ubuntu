@@ -11,6 +11,8 @@ RUN npm install --legacy-peer-deps
 # Copy and build the app
 COPY . .
 RUN npm run build
+RUN npm run test:unit
+RUN npm run test:integration
 
 # Use an Nginx image to serve the app
 FROM nginx:1.24-alpine
