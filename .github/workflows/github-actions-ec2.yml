@@ -26,6 +26,13 @@ jobs:
       - name: Publish image to docker hub
         run: docker push andra55/react-app:latest  
         
+      - name: Pull image from docker hub
+        run: docker pull andra/react-app:latest 
+      - name: Delete Old Container
+        run: docker rm -f reactContainer
+      - name: Run docker container
+        run: docker run -d -p 3000:80 --name reactContainer andra/react-app
+
       - name: Login to AWS
         uses: easingthemes/ssh-deploy@main
         env:
@@ -40,10 +47,3 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-      
-      - name: Pull image from docker hub
-        run: docker pull andra/react-app:latest 
-      - name: Delete Old Container
-        run: docker rm -f reactContainer
-      - name: Run docker container
-        run: docker run -d -p 3000:80 --name reactContainer andra/react-app
