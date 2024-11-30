@@ -9,7 +9,7 @@ COPY package.json ./
 RUN npm install --legacy-peer-deps
 
 # Copy and build the app
-COPY . .
+# COPY . .
 RUN npm run build
 
 # Use an Nginx image to serve the app
