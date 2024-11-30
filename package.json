@@ -44,16 +44,14 @@
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
-    "@testing-library/dom": "^8.11.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
-    "babel-jest": "^27.5.1",
-    "jest": "^27.5.1"
+    "@testing-library/dom": "^8.11.0", 
+    "jest": "^27.5.1",
+    "babel-jest": "^27.5.1"
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/tests/setupTests.js"
-    ],
+    "setupFilesAfterEnv": ["<rootDir>/src/tests/setupTests.js"],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
