@@ -9,11 +9,11 @@ COPY package.json ./
 RUN npm install --legacy-peer-deps
 
 # Copy and build the app
-# COPY . .
+COPY . .
 RUN npm run build
 
 # Use an Nginx image to serve the app
-FROM nginx:alpine
+FROM nginx:1.24-alpine
 WORKDIR /app/build /usr/share/nginx/html
 RUN rm -rf *
 COPY --from=build /app/build .
