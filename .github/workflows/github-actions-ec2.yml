@@ -25,7 +25,9 @@ jobs:
         run: docker build -t andra55/react-app .
       - name: Publish image to docker hub
         run: docker push andra55/react-app:latest  
-        
+      
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Pull image from docker hub
         run: docker pull andra/react-app:latest 
       - name: Delete Old Container
