@@ -14,7 +14,7 @@ RUN npm run build
 
 # Use an Nginx image to serve the app
 FROM nginx:1.24-alpine
-WORKDIR /app/build /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 COPY --from=build /app/build .
 EXPOSE 80
