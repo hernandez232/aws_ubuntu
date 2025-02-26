@@ -30,7 +30,7 @@ jobs:
   
   deploy:
     needs: build
-    runs-on: aws-ec2
+    runs-on: aws-ubuntu
     steps:
       - name: Pull image from docker hub
         run: docker pull andra55/react-app:latest
